@@ -1,8 +1,8 @@
-# Together Pins AI Backend (FastAPI)
+# Together Pins AI (FastAPI)
 
-This project is a migration of the original Kotlin/Spring Boot backend to Python/FastAPI. It provides AI-powered task recommendations using Groq API via LangChain.
+투게더핀즈 AI 파트 FastAPI 코드
 
-## Tech Stack
+## 기술 스택
 - **Framework**: FastAPI
 - **Language**: Python 3.13+
 - **Database**: SQLModel (SQLAlchemy + Pydantic)
@@ -12,44 +12,10 @@ This project is a migration of the original Kotlin/Spring Boot backend to Python
 ## Project Structure
 ```
 app/
-├── api/            # API Endpoints
-├── core/           # Configuration & DB Setup
-├── models/         # SQLModel Database Tables
-├── schemas/        # Pydantic DTOs
-├── services/       # Business Logic (AI Service)
-└── main.py         # Application Entry Point
+├── api/            # API 엔드포인트
+├── core/           # 기본 설정
+├── models/         # DB 테이블
+├── schemas/        # DTO들
+├── services/       # 비즈니스 로직
+└── main.py         # 메인 앱 진입
 ```
-
-## Setup
-
-1.  **Install Dependencies**
-    ```bash
-    uv sync
-    # or
-    pip install -r requirements.txt
-    ```
-
-2.  **Environment Variables**
-    Create a `.env` file in the root directory:
-    ```env
-    GROQ_API_KEY=your_groq_api_key
-    DATABASE_URL=sqlite:///./app.db
-    # For PostgreSQL:
-    # DATABASE_URL=postgresql://user:password@localhost:5432/db_name
-    ```
-
-3.  **Run Server**
-    ```bash
-    uvicorn app.main:app --reload
-    ```
-
-## API Endpoints
-
--   **Swagger UI**: `http://localhost:8000/docs`
--   **Get Recommendations**: `GET /api/ai/recommendations?userId={userId}`
--   **Save Feedback**: `POST /api/ai/feedback`
-
-## Key Features
--   **AI Recommendations**: Generates 3 task recommendations based on user history and feedback.
--   **Feedback System**: Stores user acceptance/rejection of recommendations.
--   **Fallback Mechanism**: Returns default recommendations if AI service fails.
